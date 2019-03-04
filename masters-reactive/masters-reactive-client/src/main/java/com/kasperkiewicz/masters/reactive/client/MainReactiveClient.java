@@ -15,7 +15,7 @@ public class MainReactiveClient {
         int requestCount = Integer.parseInt(args[2]);
         String clientId = args[3];
         long startDate = Long.parseLong(args[4]);
-        long waitDuration = startDate - System.currentTimeMillis();;
+        long waitDuration = startDate - System.currentTimeMillis();
 
         System.out.println("Simulation will start after " + waitDuration / 1000D + " seconds");
         HttpClientAdapter httpClientAdapter = new HttpClientAdapter(serverHost, serverPort);

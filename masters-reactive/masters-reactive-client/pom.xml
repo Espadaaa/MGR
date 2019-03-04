@@ -35,7 +35,7 @@
         <configuration>
           <imageName>masters.reactive.client</imageName>
           <baseImage>openjdk:8-jre-alpine</baseImage>
-          <entryPoint>["java", "-cp", "*:", "com.kasperkiewicz.masters.reactive.client.Main"]</entryPoint>
+          <entryPoint>["java", "-cp", "*:", "com.kasperkiewicz.masters.reactive.client.MainReactiveClient"]</entryPoint>
           <resources>
             <resource>
               <targetPath>/</targetPath>
