@@ -9,45 +9,43 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>masters-imperative-server</artifactId>
-
+  <artifactId>masters-imperative-client</artifactId>
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
     </dependency>
     <dependency>
       <groupId>com.kasperkiewicz</groupId>
       <artifactId>masters-common</artifactId>
-      <version>${project.parent.version}</version>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-
-      <plugin>
         <groupId>com.spotify</groupId>
         <artifactId>docker-maven-plugin</artifactId>
-        <version>1.2.0</version>
         <configuration>
-          <imageName>masters.imperative.server</imageName>
+          <imageName>masters.imperative.client</imageName>
           <baseImage>openjdk:8-jre-alpine</baseImage>
-          <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+          <entryPoint>["java", "-cp", "*:", "com.kasperkiewicz.masters.imperative.client.Main"]</entryPoint>
           <resources>
             <resource>
               <targetPath>/</targetPath>
               <directory>${project.build.directory}</directory>
               <include>${project.build.finalName}.jar</include>
+            </resource>
+            <resource>
+              <targetPath>/</targetPath>
+              <directory>${project.build.directory}</directory>
+              <include>${project.build.finalName}-jar-with-dependencies.jar</include>
             </resource>
           </resources>
         </configuration>
@@ -61,6 +59,34 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+
 </project>

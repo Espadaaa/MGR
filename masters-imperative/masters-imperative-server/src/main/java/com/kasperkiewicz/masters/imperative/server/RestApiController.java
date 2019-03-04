@@ -1,10 +1,8 @@
 package com.kasperkiewicz.masters.imperative.server;
 
-import com.kasperkiewicz.masters.imperative.common.Content;
-
-import com.kasperkiewicz.masters.imperative.common.service.MetricsService;
+import com.kasperkiewicz.masters.common.Content;
+import com.kasperkiewicz.masters.common.service.MetricsService;
 import com.kasperkiewicz.masters.imperative.server.services.ContentService;
-
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;

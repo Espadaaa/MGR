@@ -1,6 +1,6 @@
 package com.kasperkiewicz.masters.imperative.server.services;
 
-import com.kasperkiewicz.masters.imperative.common.Content;
+import com.kasperkiewicz.masters.common.Content;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
