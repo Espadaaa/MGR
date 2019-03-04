@@ -10,6 +10,8 @@
         <module name="masters-gui" />
         <module name="masters-imperative-client" />
         <module name="masters-imperative-server" />
+        <module name="masters-reactive-client" />
+        <module name="masters-reactive-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

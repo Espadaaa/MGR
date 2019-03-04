@@ -9,5 +9,8 @@
     <file url="file://$PROJECT_DIR$/masters-imperative/masters-imperative-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/masters-imperative/masters-imperative-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/masters-imperative/masters-imperative-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/masters-reactive" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/masters-reactive/masters-reactive-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/masters-reactive/masters-reactive-server" charset="UTF-8" />
   </component>
 </project>

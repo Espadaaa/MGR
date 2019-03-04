@@ -20,6 +20,7 @@
     <module>masters-common</module>
     <module>masters-gui</module>
     <module>masters-imperative</module>
+    <module>masters-reactive</module>
   </modules>
 
   <dependencyManagement>
@@ -49,6 +50,16 @@
         <artifactId>docker-client</artifactId>
         <version>8.15.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-webflux</artifactId>
+        <version>2.1.2.RELEASE</version>
+      </dependency>
+      <dependency>
+        <groupId>io.projectreactor.netty</groupId>
+        <artifactId>reactor-netty</artifactId>
+        <version>0.8.4.RELEASE</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -65,15 +76,13 @@
     </plugins>
     <pluginManagement>
       <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
-
-
 
 
 </project>
