@@ -11,7 +11,7 @@ public class GuiController {
 
 
     private static final String CLIENT_IMPERATIVE_IMAGE_NAME = "masters.imperative.client";
-    private static final int SERVER_IMPERATIVE_PORT = 8080;
+    private static final int SERVER_IMPERATIVE_PORT = 8081;
     private static final String CLIENT_REACTIVE_IMAGE_NAME = "masters.reactive.client";
     private static final int SERVER_REACTIVE_PORT = 8081;
 

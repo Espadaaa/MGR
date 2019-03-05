@@ -39,6 +39,7 @@ public class RestApiController {
         long startTimestamp = content.getTimestamp();
         long handleTime = endTimestamp - startTimestamp;
         metricsService.updateForClient(content.getClientId(), handleTime);
+
         contentService.add(content);
     }
 

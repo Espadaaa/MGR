@@ -13,7 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class HttpClientAdapter {
 
-    private static final String ADD_CONTENT_ENDPOINT = "/receiverImper";
+    private static final String ADD_CONTENT_ENDPOINT = "/receiverReact";
     private static final String JSON_CONTENT_TYPE = "application/json";
     private static final String HTTP_PREFIX = "http://";
     private String host;

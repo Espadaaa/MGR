@@ -23,7 +23,7 @@ public class MainReactiveClient {
         System.out.println("Simulation started");
 
         for (int i = 0; i < requestCount; i++) {
-            httpClientAdapter.addContent(new Content(clientId, "test"))
+            httpClientAdapter.addContent(() -> new Content(clientId, "test"))
                 .block();
         }
 

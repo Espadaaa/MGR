@@ -34,8 +34,7 @@ public class ContentHandler {
     public Mono<ServerResponse> addContent(ServerRequest request) {
         System.out.println("post whole content react");
         return request
-            .bodyToFlux(String.class)
-            .map(str -> gson.fromJson(str, Content.class))
+            .bodyToFlux(Content.class)
             .doOnNext(this::updateMetrics)
             .doOnNext(contentService::add)
             .then(ServerResponse.ok().build());
