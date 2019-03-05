@@ -17,10 +17,10 @@ public class ContentService {
 
     public void add(Content content) {
         contentList.add(content);
+        System.out.println("Content added");
     }
 
     public Flux<Content> getContentList() {
         return Flux.fromIterable(contentList);
     }
-
 }

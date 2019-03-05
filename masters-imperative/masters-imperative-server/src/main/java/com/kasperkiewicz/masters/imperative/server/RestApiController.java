@@ -1,8 +1,8 @@
 package com.kasperkiewicz.masters.imperative.server;
 
 import com.kasperkiewicz.masters.common.Content;
-import com.kasperkiewicz.masters.common.service.MetricsService;
 import com.kasperkiewicz.masters.imperative.server.services.ContentService;
+import com.kasperkiewicz.masters.imperative.server.services.MetricsService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestApiController {
 
     private ContentService contentService;
-    private MetricsService metricsService = new MetricsService();
+    private MetricsService metricsService;
 
     @Autowired
-    public RestApiController(ContentService contentService ) {
+    public RestApiController(ContentService contentService,
+        MetricsService metricsService) {
         this.contentService = contentService;
+        this.metricsService = metricsService;
     }
 
 
@@ -33,24 +35,40 @@ public class RestApiController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public void addContent(@RequestBody Content content) {
-        contentService.add(content);
-
         long endTimestamp = System.currentTimeMillis();
         long startTimestamp = content.getTimestamp();
         long handleTime = endTimestamp - startTimestamp;
         metricsService.updateForClient(content.getClientId(), handleTime);
-        System.out.println("Content added");
+        contentService.add(content);
     }
 
-    @GetMapping("/metrics/average")
-    public Map<String, Double> getMetricsAverage() {
-        System.out.println("get summary content");
+    @GetMapping("/metrics/clients/average")
+    public Map<String, Double> getAverageHandleTimeForClients() {
+        System.out.println("get metrics average per client");
         return metricsService.getAverageHandleTimeForClients();
     }
 
-    @GetMapping("/metrics/total")
-    public Map<String, Long> getMetricsTotal() {
-        System.out.println("get summary content");
+    @GetMapping("/metrics/clients/total")
+    public Map<String, Long> getTotalHandleTimeForClients() {
+        System.out.println("get metrics total per client");
         return metricsService.getTotalHandleTimeForClients();
+    }
+
+    @GetMapping("/metrics/global/total")
+    public long getGlobalTotalHandleTime() {
+        System.out.println("get metrics total for all");
+        return metricsService.getGlobalTotalHandleTime();
+    }
+
+    @GetMapping("/metrics/global/average")
+    public double getGlobalAverageHandleTime() {
+        System.out.println("get metrics average for all");
+        return metricsService.getGlobalAverageHandleTime();
+    }
+
+    @GetMapping("/metrics/global/request")
+    public double getGlobalRequestCount() {
+        System.out.println("get metrics average for all");
+        return metricsService.getGlobalRequestCount();
     }
 }

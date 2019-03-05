@@ -1,15 +1,15 @@
-package com.kasperkiewicz.masters.common.service;
+package com.kasperkiewicz.masters.reactive.server.services;
 
 import static java.util.stream.Collectors.toMap;
 
-import com.kasperkiewicz.masters.common.metrics.Metrics;
+import com.kasperkiewicz.masters.common.Metrics;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
+import org.springframework.stereotype.Service;
 
-
-
+@Service
 public class MetricsService {
 
     private Metrics globalMetrics = new Metrics();
@@ -21,7 +21,7 @@ public class MetricsService {
         globalMetrics.update(handleTime);
     }
 
-    public long getGlobaTotalHandleTime() {
+    public long getGlobalTotalHandleTime() {
         return globalMetrics.getTotalHandleTime();
     }
 

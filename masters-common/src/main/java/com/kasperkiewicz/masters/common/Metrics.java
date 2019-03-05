@@ -1,4 +1,4 @@
-package com.kasperkiewicz.masters.common.metrics;
+package com.kasperkiewicz.masters.common;
 
 public class Metrics {
 

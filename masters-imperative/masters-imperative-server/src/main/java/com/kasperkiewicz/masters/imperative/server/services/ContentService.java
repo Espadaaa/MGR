@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContentService {
+
     private final List<Content> contentList;
 
     private static final Logger LOGGER = LogManager.getLogger(ContentService.class);
@@ -19,7 +20,7 @@ public class ContentService {
 
     public void add(Content content) {
         contentList.add(content);
-        LOGGER.info("Server added content");
+        LOGGER.info("Content added");
     }
 
     public List<Content> getContentList() {

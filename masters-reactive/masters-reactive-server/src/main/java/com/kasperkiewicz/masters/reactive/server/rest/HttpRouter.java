@@ -19,9 +19,12 @@ public class HttpRouter {
 
     }
 
-//    @Bean
-//    public RouterFunction<ServerResponse> routeMetrics(MetricsHandler metricsHandler) {
-//        return route(GET("/metrics/average"), metricsHandler::getMetricsAverage)
-//            .andRoute(GET("/metrics/total"), metricsHandler::getMetricsTotal);
-//    }
+    @Bean
+    public RouterFunction<ServerResponse> routeMetrics(MetricsHandler metricsHandler) {
+        return route(GET("/metrics/global/total"), metricsHandler::GlobalTotalHandleTime)
+            .andRoute(GET("/metrics/global/average"), metricsHandler::GlobalAverageHandleTime)
+            .andRoute(GET("/metrics/global/request"), metricsHandler::GlobalRequestCount)
+            .andRoute(GET("/metrics/clients/total"), metricsHandler::getTotalHandleTimeForClients)
+            .andRoute(GET("/metrics/clients/average"), metricsHandler::AverageHandleTimeForClients);
+    }
 }
