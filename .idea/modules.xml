@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/masters-imperative/masters-imperative-client/masters-imperative-client.iml" filepath="$PROJECT_DIR$/masters-imperative/masters-imperative-client/masters-imperative-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/masters-imperative/masters-imperative-server/masters-imperative-server.iml" filepath="$PROJECT_DIR$/masters-imperative/masters-imperative-server/masters-imperative-server.iml" />
-    </modules>
-  </component>
-</project>
