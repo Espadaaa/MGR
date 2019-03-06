@@ -22,7 +22,7 @@ public class GuiController {
 
     @GetMapping("/simulationOptions")
     public String welcome() {
-        return "add";
+        return "Home";
     }
 
     @PostMapping("/startSimulationImperative")
