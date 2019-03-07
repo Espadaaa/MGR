@@ -1,10 +1,9 @@
 package com.kasperkiewicz.masters.server.imperative.services;
 
 import com.kasperkiewicz.masters.common.Content;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ContentService {
@@ -16,13 +15,8 @@ public class ContentService {
     }
 
     public void add(Content content) {
-        try {
-            contentList.add(content);
-            Thread.sleep(1000);
-            System.out.println("Content added");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        contentList.add(content);
+        System.out.println("Content added");
     }
 
     public List<Content> getContentList() {

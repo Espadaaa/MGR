@@ -1,5 +1,10 @@
 package com.kasperkiewicz.masters.gui.web;
 
+import static com.kasperkiewicz.masters.gui.simulator.DockerConstants.SERVER_IMPERATIVE_ENDPOINT;
+import static com.kasperkiewicz.masters.gui.simulator.DockerConstants.SERVER_IMPERATIVE_PORT;
+import static com.kasperkiewicz.masters.gui.simulator.DockerConstants.SERVER_REACTIVE_ENDPOINT;
+import static com.kasperkiewicz.masters.gui.simulator.DockerConstants.SERVER_REACTIVE_PORT;
+
 import com.kasperkiewicz.masters.gui.simulator.SimulationParams;
 import com.kasperkiewicz.masters.gui.simulator.Simulator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import static com.kasperkiewicz.masters.gui.simulator.DockerConstants.*;
 
 @Controller
 public class GuiController {
@@ -27,18 +30,20 @@ public class GuiController {
 
     @PostMapping("/startSimulationImperative")
     public String run(@RequestParam(value = "clientCount") int clientCount,
-                      @RequestParam(value = "messageCount") int messageCount,
-                      @RequestParam(value = "startAfter") long startAfter) {
+        @RequestParam(value = "messageCount") int messageCount,
+        @RequestParam(value = "startAfter") long startAfter) {
 
         long startDate = System.currentTimeMillis() + (startAfter * 1000);
         SimulationParams params =
-            new SimulationParams(SERVER_IMPERATIVE_PORT, SERVER_IMPERATIVE_ENDPOINT, clientCount, messageCount, startDate);
+            new SimulationParams(SERVER_IMPERATIVE_PORT, SERVER_IMPERATIVE_ENDPOINT, clientCount, messageCount,
+                startDate);
         return startSimulation(params);
     }
 
     @PostMapping("/startSimulationReactive")
     public String startSimulationReactive(@RequestParam(value = "clientCount") int clientCount,
-                                          @RequestParam(value = "messageCount") int messageCount, @RequestParam(value = "startAfter") long startAfter) {
+        @RequestParam(value = "messageCount") int messageCount,
+        @RequestParam(value = "startAfter") long startAfter) {
 
         long startDate = System.currentTimeMillis() + (startAfter * 1000);
         SimulationParams params =

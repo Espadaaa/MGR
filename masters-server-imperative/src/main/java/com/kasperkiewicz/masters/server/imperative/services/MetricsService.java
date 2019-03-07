@@ -50,4 +50,3 @@ public class MetricsService {
             .collect(toMap(Entry::getKey, e -> valueMapper.apply(e.getValue())));
     }
 }
-

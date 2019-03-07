@@ -1,5 +1,7 @@
-package com.kasperkiewicz.masters.server.reactive.rest;
+package com.kasperkiewicz.masters.server.reactive.http;
 
+import com.kasperkiewicz.masters.server.reactive.rest.ContentHandler;
+import com.kasperkiewicz.masters.server.reactive.rest.MetricsHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
