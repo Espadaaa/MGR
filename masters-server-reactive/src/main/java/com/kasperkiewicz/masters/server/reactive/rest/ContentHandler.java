@@ -32,8 +32,8 @@ public class ContentHandler {
         System.out.println("Adding new content");
         return request
             .bodyToMono(Content.class)
-            .doOnNext(this::updateMetrics)
             .doOnNext(contentService::add)
+            .doOnNext(this::updateMetrics)
             .then(ServerResponse.ok().build());
     }
 
