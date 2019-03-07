@@ -29,11 +29,14 @@ public class ContentController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public void addContent(@RequestBody Content content) {
-        System.out.println("Adding new content");
+
+        updateMetrics(content);
+        contentService.add(content);
+    }
+    private void updateMetrics(Content content) {
         long endTimestamp = System.currentTimeMillis();
         long startTimestamp = content.getTimestamp();
         long handleTime = endTimestamp - startTimestamp;
         metricsService.updateForClient(content.getClientId(), handleTime);
-        contentService.add(content);
     }
 }
