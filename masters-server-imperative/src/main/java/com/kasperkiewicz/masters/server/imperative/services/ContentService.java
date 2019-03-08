@@ -1,25 +1,26 @@
 package com.kasperkiewicz.masters.server.imperative.services;
 
+import com.google.common.collect.EvictingQueue;
 import com.kasperkiewicz.masters.common.Content;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ContentService {
 
-    private final List<Content> contentList;
+    private Queue<Content> evictingQueue;
 
     public ContentService() {
-        this.contentList = new ArrayList<>();
+
+        this.evictingQueue = EvictingQueue.create(1000);
     }
 
-    public void add(Content content) {
-        contentList.add(content);
+    public void add(Content content){
+        evictingQueue.add(content);
         System.out.println("Content added");
     }
 
-    public List<Content> getContentList() {
-        return contentList;
+    public Queue<Content> getContentList() {
+        return evictingQueue;
     }
 }

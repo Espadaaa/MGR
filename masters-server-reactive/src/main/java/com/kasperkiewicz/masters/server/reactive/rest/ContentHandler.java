@@ -29,7 +29,6 @@ public class ContentHandler {
     }
 
     public Mono<ServerResponse> addContent(ServerRequest request) {
-        System.out.println("Adding new content");
         return request
             .bodyToMono(Content.class)
             .doOnNext(contentService::add)

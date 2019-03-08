@@ -1,26 +1,27 @@
 package com.kasperkiewicz.masters.server.reactive.services;
 
+import com.google.common.collect.EvictingQueue;
 import com.kasperkiewicz.masters.common.Content;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 @Service
 public class ContentService {
 
-    private final List<Content> contentList;
+    private Queue<Content> evictingQueue;
 
     public ContentService() {
-        this.contentList = new ArrayList<>();
+
+        this.evictingQueue = EvictingQueue.create(1000);
     }
 
     public void add(Content content) {
-        contentList.add(content);
+        evictingQueue.add(content);
         System.out.println("Content added");
     }
 
     public Flux<Content> getContentList() {
-        return Flux.fromIterable(contentList);
+        return Flux.fromIterable(evictingQueue);
     }
 }
