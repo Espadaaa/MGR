@@ -1,6 +1,7 @@
 package com.kasperkiewicz.masters.client;
 
 import com.kasperkiewicz.masters.common.Content;
+import java.io.IOException;
 
 public class Main {
 
@@ -23,7 +24,9 @@ public class Main {
         Thread.sleep(waitDuration);
         System.out.println("Simulation started");
         for (int i = 0; i < requestCount; i++) {
-            httpClientAdapter.addContent(() -> new Content(clientId, "test"));
+            try {
+                httpClientAdapter.addContent(() -> new Content(clientId, "test"));
+            } catch (IOException ignored){}
         }
     }
 }
