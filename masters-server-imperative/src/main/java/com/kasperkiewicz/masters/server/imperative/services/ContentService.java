@@ -17,7 +17,6 @@ public class ContentService {
 
     public void add(Content content){
         evictingQueue.add(content);
-        System.out.println("Content added");
     }
 
     public Queue<Content> getContentList() {
