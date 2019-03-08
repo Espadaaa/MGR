@@ -3,13 +3,10 @@ package com.kasperkiewicz.masters.server.imperative.rest;
 import com.kasperkiewicz.masters.common.Content;
 import com.kasperkiewicz.masters.server.imperative.services.ContentService;
 import com.kasperkiewicz.masters.server.imperative.services.MetricsService;
-import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/receiverImper")
@@ -26,16 +23,16 @@ public class ContentController {
     }
 
     @GetMapping()
-    public Queue<Content> getWholeContent() {
-        return contentService.getContentList();
+    public List<Content> getWholeContent() {
+        return contentService.getAllContent();
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public void addContent(@RequestBody Content content) throws InterruptedException {
-
+    public void addContent(@RequestBody Content content) {
         updateMetrics(content);
         contentService.add(content);
     }
+
     private void updateMetrics(Content content) {
         long endTimestamp = System.currentTimeMillis();
         long startTimestamp = content.getTimestamp();

@@ -1,26 +1,22 @@
 package com.kasperkiewicz.masters.server.reactive.services;
 
-import com.google.common.collect.EvictingQueue;
 import com.kasperkiewicz.masters.common.Content;
-import java.util.Queue;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+
+import java.util.Queue;
 
 @Service
 public class ContentService {
 
-    private Queue<Content> evictingQueue;
+    private Queue<Content> queue = new CircularFifoQueue<>();
 
-    public ContentService() {
-
-        this.evictingQueue = EvictingQueue.create(1000);
+    public synchronized void add(Content content) {
+        queue.add(content);
     }
 
-    public void add(Content content) {
-        evictingQueue.add(content);
-    }
-
-    public Flux<Content> getContentList() {
-        return Flux.fromIterable(evictingQueue);
+    public Flux<Content> getAllContent() {
+        return Flux.fromIterable(queue);
     }
 }

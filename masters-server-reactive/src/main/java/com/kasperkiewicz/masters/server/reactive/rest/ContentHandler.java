@@ -24,7 +24,7 @@ public class ContentHandler {
     }
 
     public Mono<ServerResponse> getWholeContent(ServerRequest request) {
-        return ServerResponse.ok().body(BodyInserters.fromPublisher(contentService.getContentList(), Content.class));
+        return ServerResponse.ok().body(BodyInserters.fromPublisher(contentService.getAllContent(), Content.class));
 
     }
 
