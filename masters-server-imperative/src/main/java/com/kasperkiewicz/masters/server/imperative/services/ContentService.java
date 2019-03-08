@@ -12,7 +12,7 @@ import java.util.Queue;
 @Service
 public class ContentService {
 
-    private Queue<Content> queue = new CircularFifoQueue<>();
+    private Queue<Content> queue = new CircularFifoQueue<>(1000);
 
     public synchronized void add(Content content) {
         queue.add(content);
